@@ -491,7 +491,7 @@ class nnUNetPredictor(object):
             if prediction is None:
                 prediction = self.predict_sliding_window_return_logits(data).to('cpu')
             else:
-                prediction += self.predict_sliding_window_return_logits(data).to('cpu')
+                prediction = prediction + self.predict_sliding_window_return_logits(data).to('cpu')
 
         if len(self.list_of_parameters) > 1:
             prediction /= len(self.list_of_parameters)
